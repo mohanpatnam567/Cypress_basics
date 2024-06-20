@@ -1,0 +1,885 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset='utf-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/b4a58fcfd1e137bd9287244035a7c80d3d73b3af/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>ExtentReports</title>
+
+	<style type='text/css'>
+	</style>
+</head>
+
+	<body class='extent standard default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo blue darken-3">Extent</a>
+
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
+			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+		</ul>
+
+		<!-- report name -->
+		<span class='report-name'>ExtentReports</span>
+		
+		<!-- report headline -->
+		<span class='report-headline'></span>
+
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<li>
+                <a href='#!'>
+                    <span class='label suite-start-time blue darken-3'>Dec 20, 2022 04:57:42 PM</span>
+				</a>
+			</li>
+			<li>
+                <a href='#!'>
+                    <span class='label blue darken-3'>3.1.5</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+<div id='test-view' class='view'>
+				
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+
+			<!-- category toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button category-toggle' data-activates='category-toggle' data-constrainwidth='false' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>local_offer</i> Category
+				</a>
+				<ul id='category-toggle' class='dropdown-content'>
+					<li><a href='#'>MasterAlternateCertification</a></li>
+					<li class='divider'></li>
+					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
+				</ul>
+			</div>
+			<!-- category toggle -->
+
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+					<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+					<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+
+<div id='test-view-charts' class='subview-full'>
+	<div id='charts-row' class='row nm-v nm-h'>
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Tests</div>
+				<div class='chart-box'>
+					<canvas id='parent-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>9</span> test(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>43</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Tests</h5>
+			<ul id='test-collection' class='test-collection'>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>SC07_Certification_EmployeeUpload_LessThan6Months</span>
+						<span class='test-time'>Dec 20, 2022 04:57:42 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2022 04:57:42 PM</span>
+	<span class='label end-time'>Dec 20, 2022 04:58:13 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+978ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>MasterAlternateCertification</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:58:12 PM</td>
+					<td class='step-details'>Exisiting PLatform Lead for the skill has been deleted successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:58:13 PM</td>
+					<td class='step-details'>T02113MyComp0001 PLatform Lead for the skill is mapped successfully</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>Skill_Questionnaire_CutOff_Configuration</span>
+						<span class='test-time'>Dec 20, 2022 04:57:42 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2022 04:57:42 PM</span>
+	<span class='label end-time'>Dec 20, 2022 04:57:48 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 6s+133ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:57:46 PM</td>
+					<td class='step-details'>Skill Name:  'Selenium'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:57:47 PM</td>
+					<td class='step-details'>Existing Master Questiontionnaire and Cutoff for the skill has been deleted</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:57:48 PM</td>
+					<td class='step-details'>Master Questiontionnaire and Cutoff has been configured successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:57:48 PM</td>
+					<td class='step-details'>Master Assessment enabled for the skill successfully</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>Certification_Configuration</span>
+						<span class='test-time'>Dec 20, 2022 04:57:48 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2022 04:57:48 PM</span>
+	<span class='label end-time'>Dec 20, 2022 04:57:53 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 4s+963ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:57:52 PM</td>
+					<td class='step-details'>Skill Name:  'Selenium'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:57:53 PM</td>
+					<td class='step-details'>Master ByPass Certification for the skill has been configured successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:57:53 PM</td>
+					<td class='step-details'>MTA Certification for ML 9 with Proficiency 6</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:57:53 PM</td>
+					<td class='step-details'>MDA Certification for ML 9 with Proficiency 6</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:57:53 PM</td>
+					<td class='step-details'>MasterBypassTest1 Certification for ML 9 with Proficiency 6</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='4'>
+					<div class='test-heading'>
+						<span class='test-name'>Employee and Approver_CareerLevel_Config</span>
+						<span class='test-time'>Dec 20, 2022 04:57:56 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2022 04:57:56 PM</span>
+	<span class='label end-time'>Dec 20, 2022 04:58:05 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 9s+266ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:58:05 PM</td>
+					<td class='step-details'>Employee Career Level configured as 9</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:58:05 PM</td>
+					<td class='step-details'>ProjectMD Career Level configured as 5</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:58:05 PM</td>
+					<td class='step-details'>Platform Lead Career Level configured as 5</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:58:05 PM</td>
+					<td class='step-details'>IMD Career Level configured as 5</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='5'>
+					<div class='test-heading'>
+						<span class='test-name'>Employee_Assessment_History_Delete</span>
+						<span class='test-time'>Dec 20, 2022 04:58:13 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2022 04:58:13 PM</span>
+	<span class='label end-time'>Dec 20, 2022 04:58:21 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 7s+797ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:58:19 PM</td>
+					<td class='step-details'>Existing Objective and Expert Assessment details for the skill has been deleted</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:58:19 PM</td>
+					<td class='step-details'>Existing Proficiency details for the skill has been deleted</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:58:20 PM</td>
+					<td class='step-details'>Existing Registration details for the skill has been deleted</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:58:21 PM</td>
+					<td class='step-details'>Existing Nomination Form details for the skill has been deleted</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='6'>
+					<div class='test-heading'>
+						<span class='test-name'>Employee_Existing Skill Deletion_New Skill Mapping</span>
+						<span class='test-time'>Dec 20, 2022 04:58:21 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2022 04:58:21 PM</span>
+	<span class='label end-time'>Dec 20, 2022 04:59:26 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 5s+568ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:58:32 PM</td>
+					<td class='step-details'>Master RSM template filled successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:59:07 PM</td>
+					<td class='step-details'>Admin Functions is displayed in the Admin Menu<img data-featherlight='../Extent Reports/ErrorScreenshots/1671535747088.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671535747088.png' data-src='../Extent Reports/ErrorScreenshots/1671535747088.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:59:12 PM</td>
+					<td class='step-details'>RSM DropDown is displayed in the Upload Page<img data-featherlight='../Extent Reports/ErrorScreenshots/1671535752837.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671535752837.png' data-src='../Extent Reports/ErrorScreenshots/1671535752837.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>4:59:26 PM</td>
+					<td class='step-details'>RSM Upload is Successfull N<img data-featherlight='../Extent Reports/ErrorScreenshots/1671535766781.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671535766781.png' data-src='../Extent Reports/ErrorScreenshots/1671535766781.png'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='7'>
+					<div class='test-heading'>
+						<span class='test-name'>Alternate Certificate Emplouyee Upload</span>
+						<span class='test-time'>Dec 20, 2022 05:00:41 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2022 05:00:41 PM</span>
+	<span class='label end-time'>Dec 20, 2022 05:01:49 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 7s+993ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:00:46 PM</td>
+					<td class='step-details'>Get Assessed Button is displayed in the Primary Skill Card<img data-featherlight='../Extent Reports/ErrorScreenshots/1671535846626.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671535846626.png' data-src='../Extent Reports/ErrorScreenshots/1671535846626.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:01:09 PM</td>
+					<td class='step-details'>Not Assessed status is displayed in the Overall Assessment Status<img data-featherlight='../Extent Reports/ErrorScreenshots/1671535869315.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671535869315.png' data-src='../Extent Reports/ErrorScreenshots/1671535869315.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:01:19 PM</td>
+					<td class='step-details'>Alternate for Assessment page is displayed<img data-featherlight='../Extent Reports/ErrorScreenshots/1671535879262.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671535879262.png' data-src='../Extent Reports/ErrorScreenshots/1671535879262.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:01:19 PM</td>
+					<td class='step-details'>Alert is displayed after clicking Proceed button<img data-featherlight='../Extent Reports/ErrorScreenshots/1671535879620.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671535879620.png' data-src='../Extent Reports/ErrorScreenshots/1671535879620.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:01:22 PM</td>
+					<td class='step-details'>Competency POC link is displayed in Must Read<img data-featherlight='../Extent Reports/ErrorScreenshots/1671535882187.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671535882187.png' data-src='../Extent Reports/ErrorScreenshots/1671535882187.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:01:23 PM</td>
+					<td class='step-details'>Not Stated status is displayed for Certificate<img data-featherlight='../Extent Reports/ErrorScreenshots/1671535883951.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671535883951.png' data-src='../Extent Reports/ErrorScreenshots/1671535883951.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:01:38 PM</td>
+					<td class='step-details'>Provided Completion Date is displayed<img data-featherlight='../Extent Reports/ErrorScreenshots/1671535898350.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671535898350.png' data-src='../Extent Reports/ErrorScreenshots/1671535898350.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:01:38 PM</td>
+					<td class='step-details'>Provided Project MD Enterprise ID is displayed<img data-featherlight='../Extent Reports/ErrorScreenshots/1671535898777.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671535898777.png' data-src='../Extent Reports/ErrorScreenshots/1671535898777.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:01:39 PM</td>
+					<td class='step-details'>Attached Document is displayed<img data-featherlight='../Extent Reports/ErrorScreenshots/1671535899183.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671535899183.png' data-src='../Extent Reports/ErrorScreenshots/1671535899183.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:01:49 PM</td>
+					<td class='step-details'>Pending Approval status is displayed<img data-featherlight='../Extent Reports/ErrorScreenshots/1671535909761.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671535909761.png' data-src='../Extent Reports/ErrorScreenshots/1671535909761.png'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='8'>
+					<div class='test-heading'>
+						<span class='test-name'>Alternate Certificate Approver</span>
+						<span class='test-time'>Dec 20, 2022 05:02:51 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2022 05:02:51 PM</span>
+	<span class='label end-time'>Dec 20, 2022 05:03:36 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 45s+173ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:02:54 PM</td>
+					<td class='step-details'>Pending Actions node is displayed in the Admin Menu<img data-featherlight='../Extent Reports/ErrorScreenshots/1671535974429.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671535974429.png' data-src='../Extent Reports/ErrorScreenshots/1671535974429.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:03:19 PM</td>
+					<td class='step-details'>Must Read pop up is shown to the Certificate Approver<img data-featherlight='../Extent Reports/ErrorScreenshots/1671535999184.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671535999184.png' data-src='../Extent Reports/ErrorScreenshots/1671535999184.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:03:25 PM</td>
+					<td class='step-details'>Employee details are shown to the Certificate Approver<img data-featherlight='../Extent Reports/ErrorScreenshots/1671536005701.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671536005701.png' data-src='../Extent Reports/ErrorScreenshots/1671536005701.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:03:26 PM</td>
+					<td class='step-details'>Approve and Reject Buttons are Displayed<img data-featherlight='../Extent Reports/ErrorScreenshots/1671536006006.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671536006006.png' data-src='../Extent Reports/ErrorScreenshots/1671536006006.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:03:26 PM</td>
+					<td class='step-details'>Pop up with Commnets box is Displayed<img data-featherlight='../Extent Reports/ErrorScreenshots/1671536006427.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671536006427.png' data-src='../Extent Reports/ErrorScreenshots/1671536006427.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:03:26 PM</td>
+					<td class='step-details'>Entered comments are displayed in the Comment box<img data-featherlight='../Extent Reports/ErrorScreenshots/1671536006925.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671536006925.png' data-src='../Extent Reports/ErrorScreenshots/1671536006925.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:03:36 PM</td>
+					<td class='step-details'>Approval Success Message pop is displayed<img data-featherlight='../Extent Reports/ErrorScreenshots/1671536016278.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671536016278.png' data-src='../Extent Reports/ErrorScreenshots/1671536016278.png'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='9'>
+					<div class='test-heading'>
+						<span class='test-name'>Employee_Proficiency_Validation</span>
+						<span class='test-time'>Dec 20, 2022 05:04:33 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2022 05:04:33 PM</span>
+	<span class='label end-time'>Dec 20, 2022 05:05:10 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 36s+706ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:04:40 PM</td>
+					<td class='step-details'>Proficiency Ranking is displayed for Primary Skill Section: Current Proficient level:p5|<img data-featherlight='../Extent Reports/ErrorScreenshots/1671536080657.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671536080657.png' data-src='../Extent Reports/ErrorScreenshots/1671536080657.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:05:10 PM</td>
+					<td class='step-details'>OVERALL ASSESSMENT STATUS is displayed in the Journey Page<img data-featherlight='../Extent Reports/ErrorScreenshots/1671536110020.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671536110020.png' data-src='../Extent Reports/ErrorScreenshots/1671536110020.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>5:05:10 PM</td>
+					<td class='step-details'>Assesment Status is displayed in the Journey Page<img data-featherlight='../Extent Reports/ErrorScreenshots/1671536110293.png' width='10%' src='../Extent Reports/ErrorScreenshots/1671536110293.png' data-src='../Extent Reports/ErrorScreenshots/1671536110293.png'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='test-name'></h5>
+
+			<div id='step-filters' class="right">
+				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
+				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
+				<span class="red-text" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></span>
+				<span class="red-text text-darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></span>
+				<span class="pink-text text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></span>
+				<span class="orange-text" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></span>
+				<span class="teal-text" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></span>
+				<span status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></span>
+			</div>
+		</div>
+	</div>
+	<!-- subview right -->
+
+</div>
+<!-- test view -->
+<div id='category-view' class='view hide'>
+
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+				
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Categories</h3>
+			<ul id='category-collection' class='category-collection'>
+				
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>MasterAlternateCertification</span>
+						<span class='category-status right'>
+							<span class='label pass'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 1</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Dec 20, 2022 04:57:42 PM</td>
+										<td class='linked' test-id='1'>SC07_Certification_EmployeeUpload_LessThan6Months</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='category-name'></h5>
+		</div>
+	</div>
+</div>
+<!-- category view -->
+<!-- exception view -->
+<div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>9</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>43</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Dec 20, 2022 04:57:42 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Dec 20, 2022 05:05:17 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>0h 7m 34s+873ms</div>
+				</div>
+			</div>
+			<div class='col s4'>
+				<div class='card-panel dashboard-environment'>
+					<span class='right label cyan white-text'>Environment</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Value</th>
+						</tr>
+							<tr>
+								<td>Project</td>
+								<td>MyCompetency</td>
+							</tr>
+							<tr>
+								<td>Environment</td>
+								<td>Stage Container</td>
+							</tr>
+							<tr>
+								<td>URL</td>
+								<td>https://mycompetency-web.ciostage.accenture.com/#/home</td>
+							</tr>
+							<tr>
+								<td>Module</td>
+								<td>Expert Assessment</td>
+							</tr>
+							<tr>
+								<td>Tester</td>
+								<td>myCompTester</td>
+							</tr>
+							<tr>
+								<td>Scenario</td>
+								<td>SC07_Certification_EmployeeUpload_LessThan6Months</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+			<div class='col s6'>
+				<div class='card-panel dashboard-categories'>
+					<span class='right label cyan white-text'>Categories</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Passed</th>
+							<th>Failed</th>
+							<th>Others</th>
+							<th>Passed %</th>
+						</tr>
+						<tr>
+							<td>MasterAlternateCertification</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+				passParent: 9,
+				failParent: 0,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 0,
+				
+				passChild: 43,
+				failChild: 0,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 0,
+				exceptionsChild: 0,
+				
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		
+			<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/fca20fb7653aade98810546ab96a2a4360e3e712/dist/js/extent.js' type='text/javascript'></script>
+		
+		
+ 		<script type='text/javascript'>
+ 		</script>
+	</body>
+	
+</html>
